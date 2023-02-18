@@ -5,43 +5,50 @@
 #define player2 'O'
 using namespace std;
 
-char board[rows][cols] = { {' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+char board[rows][cols];
 char turn = player1;
-int game_over = 0;
 
 void display_board();
 char check_winner();
 void change_turn();
+void reset_board();
 
 int main() {
-	int step = 0;
-	while (!game_over) {
-		display_board();
-		if (step < 9) {
-			cout << turn << "'s turn: ";
-			int h, w;
-			cin >> h >> w;
-			if (board[h - 1][w - 1] == ' ') {
-				board[h - 1][w - 1] = turn;
-				step++;
+	char play = 'y';
+	while (play == 'y') {
+		int game_over = 0;
+		int step = 0;
+		reset_board();
+		while (!game_over) {
+			display_board();
+			if (step < 9) {
+				cout << turn << "'s turn: ";
+				int h, w;
+				cin >> h >> w;
+				if (board[h - 1][w - 1] == ' ') {
+					board[h - 1][w - 1] = turn;
+					step++;
+				}
+				else {
+					continue;
+				}
+				char result = check_winner();
+				if (result) {
+					display_board();
+					cout << turn << " wins!";
+					game_over = 1;
+				}
+				change_turn();
 			}
 			else {
-				continue;
-			}
-			char result = check_winner();
-			if (result) {
-				display_board();
-				cout << turn << " wins!";
+				cout << "Draw!";
 				game_over = 1;
 			}
-			change_turn();
 		}
-		else {
-			cout << "Draw!";
-			game_over = 1;
-		}	
+		play = NULL;
+		cout << endl << "Play again (y/n) ?" << endl;
+		cin >> play;
 	}
-	cin.get();
 	return 0;
 }
 
@@ -78,4 +85,12 @@ char check_winner() {
 void change_turn() {
 	if (turn == player1) turn = player2;
 	else turn = player1;
+}
+
+void reset_board() {
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			board[i][j] = ' ';
+		}
+	}
 }
