@@ -37,7 +37,7 @@ int main() {
 				char result = check_winner();
 				if (result) {
 					display_board();
-					cout << turn << " wins!";
+					cout << result << " wins!";
 					game_over = 1;
 				}
 				change_turn();
