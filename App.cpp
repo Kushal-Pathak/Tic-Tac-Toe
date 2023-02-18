@@ -32,19 +32,16 @@ int main() {
 			if (result) {
 				display_board();
 				cout << turn << " wins!";
-				cin.get();
-				cin.get();
-				break;
+				game_over = 1;
 			}
 			change_turn();
 		}
 		else {
 			cout << "Draw!";
-			cin.get();
-			cin.get();
-			break;
+			game_over = 1;
 		}	
 	}
+	cin.get();
 	return 0;
 }
 
