@@ -25,7 +25,7 @@ int main() {
 				cout << turn << "'s turn: ";
 				int h, w;
 				cin >> h >> w;
-				if (board[h - 1][w - 1] == ' ') {
+				if (h > 0 && h < 4 && w > 0 && w < 4 && board[h - 1][w - 1] == ' ') {
 					board[h - 1][w - 1] = turn;
 					step++;
 				}
