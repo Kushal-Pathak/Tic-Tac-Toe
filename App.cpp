@@ -98,7 +98,8 @@ void reset_board() {
 }
 
 void how_to_play() {
-	cout << "Enter row index and column index seperated by a space to play a turn.";
+	cout << "Enter vertical index and horizontal index seperated by a space to play a turn ";
+	cout << "e.g (2 2).";
 	cout << endl << "Press enter to play...";
 	cin.get();
 }
