@@ -12,8 +12,10 @@ void display_board();
 char check_winner();
 void change_turn();
 void reset_board();
+void how_to_play();
 
 int main() {
+	how_to_play();
 	char play = 'y';
 	while (play == 'y') {
 		int game_over = 0;
@@ -93,4 +95,10 @@ void reset_board() {
 			board[i][j] = ' ';
 		}
 	}
+}
+
+void how_to_play() {
+	cout << "Enter row index and column index seperated by a space to play a turn.";
+	cout << endl << "Press enter to play...";
+	cin.get();
 }
